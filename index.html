@@ -1,20 +1,1163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to osmmoviz</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://ankit81413.github.io/Osmmoviz/style.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0,">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  
+
+  <title>Osmmoviz</title>
+
+  
 </head>
 <style>
-    body{
-        background-color: #0C65B5;
+    *{
+      padding:0;
+      margin:0;
     }
-</style>
-<body>
     
-</body>
+    .upcoming_pstr {
+    display: block;
+    height: 80px;
+    width: 120px;
+    background-color: violet;
+    background-image: url('/images/IMG_20230509_223312_215.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    opacity: 80%;
+  }
+
+  .upc_active .upcoming_pstr {
+    display: flex;
+    height: 100px;
+    width: 140px;
+    background-color: violet;
+    background-image: url('/images/IMG_20230509_223312_215.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 100%;
+  }
+  
+  .upc_active .upc_txt_area p{
+    max-height: 50px;
+    overflow-y: scroll;
+  }
+  
+
+
+
+
+ @media screen and (min-width: 700px){
+  .upcoming_pstr {
+    display: block;
+    height: 176px;
+    width: 300px;
+    background-color: violet;
+    /*
+    background-image: url('/images/IMG_20230509_223312_215.jpg');
+    background-size: cover;
+    background-position: center;
+    */
+    border-radius: 2px;
+    opacity: 80%;
+  }
+
+  .upc_active .upcoming_pstr {
+    display: flex;
+    height: 250px;
+    width: 400px;
+    background-color: violet;
+    /*
+    background-image: url('/images/IMG_20230509_223312_215.jpg');
+    background-size: cover;
+    background-position: center;
+    */
+    border-radius: 2px;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 100%;
+  }
+  
+  .upc_active .upc_txt_area p {
+    max-height: 110 px;
+    overflow-y: scroll;
+  }
+  
+  .mov-card a h3{
+    max-width: 100px;
+  }
+  
+ }
+  
+  
+  #loader{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    align-items: center;
+    z-index: 100000;
+    background-color: #0C65B5;
+    flex-direction: column;
+  }
+  #loader #osmmovizlogo{
+    display: flex;
+    background-color: #0C65B5;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+  }
+  #loader #osmmovizlogo img{
+    width: 150px;
+    position: relative;
+    bottom: 10%;
+  }
+  
+  #Charlieslogo{
+    width: 120px;
+    position: absolute;
+    bottom: 15%;
+  }
+
+  #loader #osmmovizlogo i{
+    
+    color: white;
+    
+    position: relative;
+    bottom: 10%;
+  }
+  
+  #Charlieslogo{
+    width: 120px;
+    position: absolute;
+    bottom: 15%;
+  }
+
+
+
+  
+  
+  
+  
+  
+  
+</style>
+
+
 <script>
-    window.location.href="https://www.osmmoviz.tech";
+
+  
+// mov banner elements
+  var mov_ban_name_1 = "Extraction 2"
+  var mov_ban_name_2 = "Barbie"
+  var mov_ban_name_3 = "Oppenheimer"
+  var mov_ban_name_4 = "avatar 2"
+  var mov_ban_name_5 = "Infinity war"
+  var mov_ban_name_6 = "The lost city"
+  var mov_ban_name_7 = "Jee karda"
+  var mov_ban_name_8 = "Fast X"
+  var mov_ban_name_9 = "The flash"
+  var mov_ban_name_10 = "Titanic"
+  var mov_ban_name_11 = "Elemental"
+  var mov_ban_name_12 = "Spiderman-Across The Spider Verse"
+  
+  
+  
+  
+  var mov_ban_link_1 = "https://www.osmmoviz.tech/extraction-ii2023"
+  var mov_ban_link_2 = "https://www.osmmoviz.tech/barbie2023?fromSearch=true"
+  var mov_ban_link_3 = "https://www.osmmoviz.tech/oppenheimer2023"
+  var mov_ban_link_4 = "https://www.osmmoviz.tech/avatar-the-way-of-water2022"
+  var mov_ban_link_5 = "https://www.osmmoviz.tech/avengers-infinity-war2018"
+  var mov_ban_link_6 = "https://www.osmmoviz.tech/the-lost-city2022"
+  var mov_ban_link_7 = "https://www.osmmoviz.tech/jee-karda2023"
+  var mov_ban_link_8 = "https://www.osmmoviz.tech/fast-x2023"
+  var mov_ban_link_9 = "https://www.osmmoviz.tech/the-flash2023"
+  var mov_ban_link_10 = "https://www.osmmoviz.tech/titanic1997"
+  var mov_ban_link_11 = "https://www.osmmoviz.tech/elemental2023"
+  var mov_ban_link_12 = "https://www.osmmoviz.tech/spider-man-across-the-spider-verse2023"
+  
+  
+  
+  
+  var mov_ban_back_1 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21145&authkey=%21AKGbkVJHuFq7_I4&width=665&height=374"
+  var mov_ban_back_2 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21507&authkey=%21AKAA0HBPlaGgHb4&width=764&height=401"
+  var mov_ban_back_3 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21506&authkey=%21ACaWTou38NJNRoE&width=678&height=452"
+  var mov_ban_back_4 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21431&authkey=%21AGx8BJLYnDq0J-0&width=739&height=415"
+  var mov_ban_back_5 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21480&authkey=%21AL86TR-R0eyKryA&width=738&height=415"
+  var mov_ban_back_6 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21165&authkey=%21ANekzbum2VgDnyc&width=640&height=480"
+  var mov_ban_back_7 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21424&authkey=%21AH4OB7lHDsDCECM&width=672&height=456"
+  var mov_ban_back_8 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21212&authkey=%21ANcx4mRfzc56Wu0&width=695&height=441"
+  var mov_ban_back_9 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21221&authkey=%21AM4pwaVrJwzBmUE&width=742&height=413"
+  var mov_ban_back_10 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21256&authkey=%21AGFDG_c52OWWjiQ&width=726&height=422"
+  var mov_ban_back_11 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21432&authkey=%21AO4j21095K1EGdk&width=754&height=407"
+  var mov_ban_back_12 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21224&authkey=%21AKKISnI5NSHS18k&width=890&height=467"
+  
+  
+  
+  
+  
+  
+  
+  // web banner elements
+  var web_ban_name_1 = "Money hiest"
+  var web_ban_name_2 = "College romance S04"
+  var web_ban_name_3 = "The witcher 3"
+  var web_ban_name_4 = "Farzi"
+  var web_ban_name_5 = "All of us are dead"
+  var web_ban_name_6 = "Squid game"
+  var web_ban_name_7 = "The Boys"
+  var web_ban_name_8 = "The Wednesday"
+  var web_ban_name_9 = "Stranger things"
+  var web_ban_name_10 = "Peaky blinders"
+  var web_ban_name_11 = "The Night Manager"
+  var web_ban_name_12 = "Scam 1992"
+  
+  
+  
+  
+  var web_ban_link_1 = "https://www.osmmoviz.tech/money-heist2017"
+  var web_ban_link_2 = "https://www.osmmoviz.tech/college-romance-s04-2023"
+  var web_ban_link_3 = "https://www.osmmoviz.tech/the-witchers03"
+  var web_ban_link_4 = "https://www.osmmoviz.tech/farzi2023"
+  var web_ban_link_5 = "https://www.osmmoviz.tech/all-of-us-are-dead2022"
+  var web_ban_link_6 = "https://www.osmmoviz.tech/squid-game2021"
+  var web_ban_link_7 = "https://www.osmmoviz.tech/the-boys2019"
+  var web_ban_link_8 = "https://www.osmmoviz.tech/wednesday2022"
+  var web_ban_link_9 = "https://www.osmmoviz.tech/stranger-things2016?fromSearch=true"
+  var web_ban_link_10 = "https://www.osmmoviz.tech/peaky-blinders2013"
+  var web_ban_link_11 = "https://www.osmmoviz.tech/the-night-manager2023"
+  var web_ban_link_12 = "https://www.osmmoviz.tech/scam-1992-the-harshad-mehta-story2020"
+  
+  
+  
+  
+  var web_ban_back_1 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21446&authkey=%21APYfeKUCqhplef4&width=739&height=415"
+  var web_ban_back_2 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21426&authkey=%21ACk8rPH4SIDTf8I&width=504&height=279"
+  var web_ban_back_3 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21439&authkey=%21AErLK1Yfs6aK6RY&width=783&height=391"
+  var web_ban_back_4 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21244&authkey=%21ACoBUMaoX7dm9hw&width=739&height=415"
+  var web_ban_back_5 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21425&authkey=%21AOKyr5T56cZgrX4&width=739&height=415"
+  var web_ban_back_6 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21158&authkey=%21ANRRXZ_B-OaaYB8&width=739&height=415"
+  var web_ban_back_7 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21151&authkey=%21ALhqsZ5VuayHzL8&width=783&height=391"
+  var web_ban_back_8 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21605&authkey=%21ANpewthRWCl7nGo&width=299&height=168"
+  var web_ban_back_9 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21144&authkey=%21AJnEIeudCSazaeA&width=763&height=402"
+  var web_ban_back_10 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21154&authkey=%21ADWw7vupT5-gzVs&width=764&height=401"
+  var web_ban_back_11 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21354&authkey=%21AEd30w2tGrW5xUU&width=1280&height=720"
+  var web_ban_back_12 = "https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21606&authkey=%21AGZMeHjfWpcotfg&width=298&height=168"
+  
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+
+
+  
 </script>
+
+
+
+
+
+<body id="body">
+  
+  
+  <div id="loader">
+    <div id="osmmovizlogo">
+      <img src="https://ankit81413.github.io/Osmmoviz/New Project 23 [83E5F5E].png" alt="LOADING...">
+      
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      
+    </div>
+    <img src="https://ankit81413.github.io/Osmmoviz/New Project 30 [075006F].png" alt="Charlie's" id="Charlieslogo">
+  </div>
+  <div id="preloader">
+    
+  </div>
+
+  <section id="banner">
+    
+    
+    <div class="black_gradient">
+      
+    </div>
+    <div class="banner_background" style="background:url('https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21439&authkey=%21AErLK1Yfs6aK6RY&width=783&height=391');background-size: cover" >
+     <span class="banner_mov_name">
+       <h1 id="banner_mov_name_h1"></h1>
+       <a href="#" id="banner_mov_name_a"><i class="fa-solid fa-circle-play"></i>Watch</a>
+       </span>
+    </div>
+     
+    
+    
+    
+    
+  
+  
+  
+
+
+  
+
+
+    <div id="web-banner">
+
+<!--
+      <div id="left-arror-container" onclick="LeftWebClick('left')">
+        <i class="fa-solid fa-chevron-left arrow-left"></i>
+      </div>
+-->
+<!--<div id="left-arror-container" onclick="slideLeft2()">-->
+      <div id="left-arror-container" onclick="slideLeft2()">
+        
+        <i class="fa-solid fa-chevron-left arrow-left"></i>
+      </div>
+  
+<div id="web_banner_scroll" style="display:flex;"><div class="poster_container">
+        <a href="https://www.osmmoviz.tech/money-heist2017"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21416&authkey=%21AHPLwItLn3GuZBg&width=1280&height=720" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/college-romance-s04-2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21600&authkey=%21AHdB9ZD9dKINUtQ&width=298&height=168" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/the-witchers03"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21415&authkey=%21AAx1iIgJuWZOAcI&width=737&height=415" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/farzi2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21391&authkey=%21AB1iIbupXZhMfBo&width=1200&height=675" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/all-of-us-are-dead2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21602&authkey=%21ABn4J7ZmdswVm98&width=299&height=168" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/squid-game2021"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21604&authkey=%21APbh4etVwCOvoAU&width=737&height=415" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/the-boys2019"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21603&authkey=%21AP_CML78r31Egws&width=697&height=392" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/wednesday2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21605&authkey=%21ANpewthRWCl7nGo&width=299&height=168" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/stranger-things2016?fromSearch=true"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21290&authkey=%21AODlYQe_4_VCf0A&width=712&height=400" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/peaky-blinders2013"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21287&authkey=%21AMH6ni0MgeOYsBU&width=678&height=381" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/the-night-manager2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21354&authkey=%21AEd30w2tGrW5xUU&width=1280&height=720" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      <div class="poster_container">
+        <a href="https://www.osmmoviz.tech/scam-1992-the-harshad-mehta-story2020"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21606&authkey=%21AGZMeHjfWpcotfg&width=298&height=168" alt="WEB NOT FOUND" class="banner-web-poster"></a>
+        <div class="web-under-line">
+
+        </div>
+      </div>
+      
+      </div>
+
+
+<!--
+      <div id="right-arror-container" onclick="LeftWebClick('right')">
+        <i class="fa-solid fa-chevron-right arrow-right"></i>
+      </div>
+-->
+
+
+      <div id="right-arror-container" onclick="slideRight2()">
+        <!--<div id="right-arror-container" onclick="slideRight2(),counerweb('Add')">-->
+        <i class="fa-solid fa-chevron-right arrow-right"></i>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="web-heading">
+      <h1>WEB SERIES</h1>
+    </div>
+
+
+    <div id="mov-banner">
+
+      <div id="up-arror-container" onclick="Upmovclick('up')">
+        <i class="fa-solid fa-chevron-up arrow-up"></i>
+      </div>
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/extraction-ii2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21275&authkey=%21ACWZCR8AXRBpGwI&width=854&height=1280" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/barbie2023?fromSearch=true"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21593&authkey=%21AC6O0mQ8FBeyxnE&width=650&height=976" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/oppenheimer2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21591&authkey=%21ACXXSt8M75wMaRQ&width=297&height=446" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/avatar-the-way-of-water2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21592&authkey=%21AMRYQ5ZwtqTKeK4&width=182&height=273" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/avengers-infinity-war2018"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21581&authkey=%21ADPErutxMxlltSI&width=853&height=1279" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/the-lost-city2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21594&authkey=%21AIfVNBqoWLWogIA&width=183&height=274" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/jee-karda2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21595&authkey=%21AJaQfWMpEyPNWv8&width=172&height=259" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/fast-x2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21596&authkey=%21AE2SZmi4sHKeTSo&width=178&height=267" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/the-flash2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21314&authkey=%21AOXpxX5N3q5ZBQE&width=854&height=1280" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/titanic1997"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21384&authkey=%21AFEy4vIw2-XvggQ&width=854&height=1280" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/elemental2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21598&authkey=%21AOq4yf2yAyHAO8g&width=182&height=273" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="mov-poster_container">
+        <a href="https://www.osmmoviz.tech/spider-man-across-the-spider-verse2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21599&authkey=%21AIkrwkHgp2BPisM&width=182&height=273" alt="MOV NOT FOUND" class="banner-mov-poster">
+        </a>
+        <div class="mov-under-line">
+
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     <div id="down-arror-container" onclick="Upmovclick('down')">
+        <i class="fa-solid fa-chevron-down arrow-down"></i>
+      </div>
+    
+
+
+
+
+    </div>
+
+
+    <div class="mov-heading">
+      <h1>MOVIZ</h1>
+    </div>
+
+
+  </section>
+
+  <div id="spacer1">
+
+  </div>
+
+  <h1 class="headings">This Weekend</h1>
+
+  <div class="cards-section">
+
+
+    <div class="movie-cards">
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/spider-man-across-the-spider-verse2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21313&authkey=%21AMl4-x38cJwqPF8&width=1080&height=607" alt="movie poster not available" class="new-rls-poster">
+          <h3>Spiderman across the spider verse</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">8.8</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/chandigarh-kare-aashiqui2021"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21375&authkey=%21AMTndcOMdKDLJLg&width=1280&height=720" alt="movie poster not available" class="new-rls-poster">
+          <h3>Chandigarh kare Aashiqui</h3>
+        </a>
+        <p>2021</p>
+        <i class="fa-regular fa-star">6.8</i>
+      </div>
+      
+        
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/fast-x2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21308&authkey=%21AIZaMZIL2CLUMRo&width=840&height=472" alt="movie poster not available" class="new-rls-poster">
+          <h3>Fast X</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">5.8</i>
+      </div>
+
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/tiku-weds-sheru2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21282&authkey=%21AO2CUqIvs8qhDZo&width=1280&height=720" alt="movie poster not available" class="new-rls-poster">
+          <h3>Titu weds shiru</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">3.4</i>
+      </div>
+
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/ib-712023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21293&authkey=%21AL-OsLUp9PZM6-A&width=853&height=1280" alt="movie poster not available" class="new-rls-poster">
+          <h3>IB71</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">7.3</i>
+      </div>
+      
+    
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/highway-love2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21272&authkey=%21AHLGDRJREeueNkU&width=834&height=1250" alt="movie poster not available" class="new-rls-poster">
+          <h3>Highway love</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">7.7</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="#"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21367&authkey=%21ANeR4iZQXg-Whqk&width=370&height=554" alt="movie poster not available" class="new-rls-poster">
+          <h3>The tommorrow war</h3>
+        </a>
+        <p>2021</p>
+        <i class="fa-regular fa-star">6.5</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/the-last-kingdom-seven-kings-must-die2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21326&authkey=%21AOsLeF954gpNuSE&width=378&height=566" alt="movie poster not available" class="new-rls-poster">
+          <h3>7 kings must die</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">6.9</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/the-social-network2010"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21550&authkey=%21ANWIBSoyLvu6B_Q&width=853&height=1279" alt="movie poster not available" class="new-rls-poster">
+          <h3>The social network</h3>
+        </a>
+        <p>2010</p>
+        <i class="fa-regular fa-star">7.8</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/pirates-of-the-caribbean-at-worlds-end-2007"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21398&authkey=%21AFnathkQDz9Ds5s&width=538&height=806" alt="movie poster not available" class="new-rls-poster">
+          <h3>Pirates of the carabien</h3>
+        </a>
+        <p>2003</p>
+        <i class="fa-regular fa-star">8.1</i>
+      </div>
+
+      
+        
+        
+
+
+    </div>
+
+
+
+  </div>
+
+
+  <h1 class="headings">Upcoming</h1>
+
+  <section id="upcoming_area">
+
+
+    <div id="upc_left_arrow">
+      <i class="fa-solid fa-chevron-left mov-arrow-left" id="upcleft"></i>
+    </div>
+
+
+
+    <div id="upcoming_area_scroll">
+
+
+
+
+
+        
+        <div class="upcoming_container">
+      
+        <div class="upcoming_pstr" style=" background:url('https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21612&authkey=%21AACTo7bTtu87UFE&width=711&height=400');
+        background-size:cover;background-position: center center;">
+          <div class="upc_underline">
+        
+          </div>
+        </div>
+        
+        <div class="upc_txt_area">
+        
+          <h1>The Equalizer 3</h1>
+          <i class="fa-regular fa-star">5.6</i>
+          <p>Robert McCall finds himself at home in Southern Italy but he discovers his friends are under the control of local crime bosses. As events turn deadly, McCall knows what he has to do: become his friends' protector by taking on the mafia.</p>
+          <h3>Release date :</h3>
+          <h2>Aug 30,2023</h2>
+          
+          
+          <a href="https://youtu.be/19ikl8vy4zs"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a></a>
+          
+        </div>
+          
+      </div>
+        
+        <div class="upcoming_container">
+      
+        <div class="upcoming_pstr" style=" background:url('https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21610&authkey=%21APmNey2ZDZlWZs8&width=960&height=540');
+        background-size:cover;background-position: center center;">
+          <div class="upc_underline">
+        
+          </div>
+        </div>
+        
+        <div class="upc_txt_area">
+        
+          <h1>Aquaman and the Lost Kingdom</h1>
+          <i class="fa-regular fa-star">6.1</i>
+          <p>Plot unknown. Sequel to the 2018 film 'Aquaman.</p>
+          <h3>Release date :</h3>
+          <h2>Dec 29,2023</h2>
+          
+          
+          <a href="https://youtu.be/nA7-qKCg3B8"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a></a>
+          
+        </div>
+          
+      </div>
+        
+        <div class="upcoming_container">
+      
+        <div class="upcoming_pstr" style=" background:url('https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21611&authkey=%21AOSE_uxQpgxK2DU&width=1116&height=628');
+        background-size:cover;background-position: center center;">
+          <div class="upc_underline">
+        
+          </div>
+        </div>
+        
+        <div class="upc_txt_area">
+        
+          <h1>Blue Beetle</h1>
+          <i class="fa-regular fa-star">4.7</i>
+          <p>An alien relic chooses Jaime Reyes to be its symbiotic host, bestowing the teenager with a suit of armor that's capable of extraordinary and unpredictable powers, forever changing his destiny as he becomes the superhero, Blue Beetle.</p>
+          <h3>Release date :</h3>
+          <h2>Aug 18,2023</h2>
+          
+          
+          <a href="https://youtu.be/4wxyy8Rcz4k"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a></a>
+          
+        </div>
+          
+      </div>
+
+      <div class="upcoming_container">
+      
+        <div class="upcoming_pstr" style=" background:url('https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21613&authkey=%21AKM81B3QDJ5sess&width=1000&height=750');
+        background-size:cover;background-position: center center;">
+          <div class="upc_underline">
+        
+          </div>
+        </div>
+        
+        <div class="upc_txt_area">
+        
+          <h1>The Marvels</h1>
+          <i class="fa-regular fa-star">6.2</i>
+          <p>Carol Danvers gets her powers entangled with those of Kamala Khan and Monica Rambeau, forcing them to work together to save the universe.</p>
+          <h3>Release date :</h3>
+          <h2>Nov 10,2023</h2>
+          
+          
+          <a href="https://youtu.be/LHq6F3UsDDI"><i class="fa-solid fa-circle-play"></i>Watch Trailer</a></a>
+          
+        </div>
+          
+      </div>
+
+
+    </div>
+
+
+
+    <div id="upc_right_arrow">
+      <i class="fa-solid fa-chevron-right arrow-right" id="upcright"></i>
+    </div>
+
+
+
+
+
+  </section>
+
+
+  <h1 class="headings"> Featured</h1>
+
+
+  <section id="featured">
+
+
+
+
+
+      
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/doctor-strange2016"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21546&authkey=%21AA1zm_VaDy4Js68&width=853&height=1280" alt="movie poster not available" class="new-rls-poster">
+          <h3>Dr. strange</h3>
+        </a>
+        <p>2016</p>
+        <i class="fa-regular fa-star">7.5</i>
+      </div>
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/lakadbaggha2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21268&authkey=%21AM_1lxuWYuMbfGE&width=400&height=599" alt="movie poster not available" class="new-rls-poster">
+          <h3>Lakadbaggha</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">6.1</i>
+      </div>
+
+
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/interstellar2014"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21562&authkey=%21AGLioV9H5OOitWs&width=500&height=750" alt="movie poster not available" class="new-rls-poster">
+          <h3>Interstellar</h3>
+        </a>
+        <p>2014</p>
+        <i class="fa-regular fa-star">8.7</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/aquaman2018"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21561&authkey=%21AB2UgROkXlA7CAo&width=503&height=755" alt="movie poster not available" class="new-rls-poster">
+          <h3>Aquaman</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">7.0</i>
+      </div>
+
+      
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/spider-man-homecoming2017"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21547&authkey=%21AGFnin2T2HsQFng&width=853&height=1280" alt="movie poster not available" class="new-rls-poster">
+          <h3>Spiderman homecoming</h3>
+        </a>
+        <p>2017</p>
+        <i class="fa-regular fa-star">7.8</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/jee-karda2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21595&authkey=%21AJaQfWMpEyPNWv8&width=172&height=259" alt="movie poster not available" class="new-rls-poster">
+          <h3>Jee karda</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">7.0</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/college-romance-s02-2021"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21403&authkey=%21AKioImw_wzOGaZo&width=854&height=1280" alt="movie poster not available" class="new-rls-poster">
+          <h3>College romance s2</h3>
+        </a>
+        <p>2021</p>
+        <i class="fa-regular fa-star">8.3</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/all-of-us-are-dead2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21399&authkey=%21AAr-pBCcqhw9X3Q&width=720&height=1080" alt="movie poster not available" class="new-rls-poster">
+          <h3>All of us are dead</h3>
+        </a>
+        <p>2022</p>
+        <i class="fa-regular fa-star">7.5</i>
+      </div>
+
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/pirates-of-the-caribbean-dead-mans-chest-2006?fromSearch=true"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21396&authkey=%21AIt_FSYteupWcOw&width=986&height=1480" alt="movie poster not available" class="new-rls-poster">
+          <h3>Pirates of the Caribbean: Dead Man's Chest</h3>
+        </a>
+        <p>2006</p>
+        <i class="fa-regular fa-star">6.5</i>
+      </div>
+      
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/the-witchers02?fromSearch=true"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21417&authkey=%21AMwQIB0YdXPPGEo&width=650&height=366" alt="movie poster not available" class="new-rls-poster">
+          <h3>The witcher season S02</h3>
+        </a>
+        <p>2021</p>
+        <i class="fa-regular fa-star">8.0</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/flames2018"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21356&authkey=%21AJZneATlBA1jP5U&width=581&height=327" alt="movie poster not available" class="new-rls-poster">
+          <h3>Flames</h3>
+        </a>
+        <p>2018</p>
+        <i class="fa-regular fa-star">8.9</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/k-g-f-chapter-22022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21340&authkey=%21AGAWXIY823xvbGM&width=1024&height=576" alt="movie poster not available" class="new-rls-poster">
+          <h3>Kgf 2</h3>
+        </a>
+        <p>2022</p>
+        <i class="fa-regular fa-star">8.3</i>
+      </div>
+
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/govinda-naam-mera2022"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21401&authkey=%21AKxatmVZMKdOUhA&width=1280&height=720" alt="movie poster not available" class="new-rls-poster">
+          <h3>Govinda mera naam</h3>
+        </a>
+        <p>2022</p>
+        <i class="fa-regular fa-star">6.5</i>
+      </div>
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/the-wolf-of-wall-street2013"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21582&authkey=%21ANbBZgl_p7tL5to&width=796&height=448" alt="movie poster not available" class="new-rls-poster">
+          <h3>Wolf of the wall street</h3>
+        </a>
+        <p>2013</p>
+        <i class="fa-regular fa-star">8.2</i>
+      </div>
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/money-heist2017?fromSearch=true"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21416&authkey=%21AHPLwItLn3GuZBg&width=1280&height=720" alt="movie poster not available" class="new-rls-poster">
+          <h3>Money hiest S01</h3>
+        </a>
+        <p>2017</p>
+        <i class="fa-regular fa-star">8.2</i>
+      </div>
+      
+      <div class="mov-card">
+
+        <a href="https://www.osmmoviz.tech/citadel2023"><img src="https://onedrive.live.com/embed?resid=BE4B60C2EB90A997%21397&authkey=%21AKpAom8iBk6pkkY&width=1276&height=718" alt="movie poster not available" class="new-rls-poster">
+          <h3>Citadel</h3>
+        </a>
+        <p>2023</p>
+        <i class="fa-regular fa-star">6.1</i>
+      </div>
+
+
+
+
+      
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+  <footer id="footer">
+    <div class="footer_container">
+
+
+      <div class="foot-1">
+        <img src="https://ankit81413.github.io/Osmmoviz/New Project 23 [83E5F5E].png" alt="OSM MOVIZ">
+        <p>Explore movies and shows on our website. We don't host content, but provide links to stream from trusted sources.
+          OSM MOVIZ - One Click One Movie.</p>
+      </div>
+      <div class="foot-2">
+        <h1>Links</h1>
+        <a href="www.osmmoviz.tech">Home</a>
+        <a href="https://www.osmmoviz.tech/about-us">Contact Us</a>
+        <a href="https://www.osmmoviz.tech/about-us">About Us</a>
+        <a href="https://www.osmmoviz.tech/request-movies">Request Movie</a>
+        <a href="https://osmmoviz.github.io/osmmoviz/links">Link Generator</a>
+      </div>
+      <div class="foot-3">
+        <h1>Social</h1>
+        <a href="" id="req-mov">Request Movie</a>
+        <h1>Follow Us on</h1>
+        <span id="social_links">
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-telegram"></i></a>
+        </span>
+      </div>
+
+
+
+    </div>
+
+    <div class="copyright">
+      <p>Copyright © 2023 Charlie's Inc. All rights reserved.</p>
+    </div>
+
+
+  </footer>
+
+
+
+
+
+<script>
+  
+  
+    function createImagesInDiv() {
+    const divId = "preloader";
+
+    for (let i = 1; i <= 12; i++) {
+        const variableName = `web_ban_back_${i}`;
+        const imageLink = window[variableName]; // Assuming the variables are in the global scope
+
+        const img = document.createElement("img");
+        img.src = imageLink;
+        img.width = 1;
+        img.height = 1;
+        img.style.position = "absolute";
+        img.style.left = "-100px";
+        img.style.top = "-100px";
+        document.getElementById(divId).appendChild(img);
+    }
+}
+
+// Call the function to create the images
+createImagesInDiv();
+
+function createImagesInDiv2() {
+    const divId = "preloader";
+
+    for (let i = 1; i <= 12; i++) {
+        const variableName = `mov_ban_back_${i}`;
+        const imageLink = window[variableName]; // Assuming the variables are in the global scope
+
+        const img = document.createElement("img");
+        img.src = imageLink;
+        img.width = 1;
+        img.height = 1;
+        img.style.position = "absolute";
+        img.style.left = "-100px";
+        img.style.top = "-100px";
+        document.getElementById(divId).appendChild(img);
+    }
+}
+
+// Call the function to create the images
+createImagesInDiv2();
+
+  
+</script>
+
+
+  
+<script src="https://ankit81413.github.io/Osmmoviz/main4.js"></script>
+
+<script src="https://ankit81413.github.io/Osmmoviz/main2.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  
+  
+  
+
+
+    <script>
+    // JavaScript code to modify scrollbar style
+    window.onload = function() {
+      // Get the body element
+      var body = document.body;
+      
+      // Add a CSS class to the body
+      body.classList.add('custom-scrollbar');
+      
+      setTimeout(function() {
+      document.getElementById("loader").style.display="none";
+    }, 800);
+      
+    };
+  </script>
+</body>
 
 </html>
